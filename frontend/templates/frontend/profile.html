@@ -1,0 +1,18 @@
+{% extends 'frontend/base.html' %}
+
+{% block title %}Profil - tChatZone{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Compte</h1>
+    {% if user %}
+        <p><strong>Nom d'utilisateur:</strong> {{ user.username }}</p>
+    {% elif error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Se déconnecter</button>
+    </form>
+</div>
+{% endblock %}
